@@ -1,5 +1,7 @@
-# Processing-Midi-Visualizations
- A colletion of Processing projects that connect midi input signals to various interactive visuals
+# PianoPaint: MIDI Powered Generative Art
+A colletion of generative art pieces that react to MIDI input. Let your piano, bass, synth, and drums be your paint brushes on this interactive canvas.
+
+This was built using Processing.
 
 Each of the folders starting with `midi` contains a Processing project that controls physical or virtual visual elements with MIDI input.
 
