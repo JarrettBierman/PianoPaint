@@ -6,9 +6,10 @@ MidiBus myBus;
 //Emitter[] emitters;
 //ArrayList<Confetti> confettis;
 ArrayList<Comet> comets;
-
 FWorld world;
 
+Pulse kickPulse;
+Pulse snarePulse;
 
 int WINDOW_SIZE = 800;
 int LOW_NOTE = 21;
@@ -21,14 +22,14 @@ String PORT_NAME = "Bus 1";
 
 
 // DRUM CONSTANTS
-int KICK = 44;
-int SNARE = 45;
-int TOMRACK = 46;
-int TOMFLOOR = 47;
-int HIHAT = 51;
-int RIDE = 50;
-int CRASH = 49;
-int SHAKER = 48;
+int KICK = 36;
+int SNARE = 37;
+int TOMRACK = 38;
+int TOMFLOOR = 39;
+int HIHAT = 43;
+int RIDE = 42;
+int CRASH = 41;
+int SHAKER = 40;
 
 
 void setup() {
@@ -45,6 +46,9 @@ void setup() {
   //emitters = new Emitter[HIGH_NOTE - LOW_NOTE];
   //confettis = new ArrayList<Confetti>();
   comets = new ArrayList<Comet>();
+  
+  kickPulse = new Pulse(width/2, 300, 1000, color(255, 200, 76));
+  snarePulse = new Pulse(width/2, 600, 1000, color(123, 31, 240));
     
   //for(int i = 0; i < HIGH_NOTE - LOW_NOTE; i++) {
   //  int note = LOW_NOTE + i;
@@ -64,6 +68,14 @@ void draw() {
   background(255);
   
   world.step();
+  
+  
+  kickPulse.update();
+  snarePulse.update();
+  
+  kickPulse.draw();
+  snarePulse.draw();
+  
   world.draw();
   
   //for (int i = 0; i < emitters.length; i++) {
@@ -95,10 +107,12 @@ void noteOn(int channel, int pitch, int velocity) {
   if(channel == 0) {
     //DRUMS
     if(pitch == KICK) {
-      comets.add(new Comet(40, height - 40));
+      //comets.add(new Comet(40, height - 40));
+      kickPulse.lightUp();
     }
     else if(pitch == SNARE) {
-      comets.add(new Comet(width/2, height/2));
+      //comets.add(new Comet(width/2, height/2));
+      snarePulse.lightUp();
     }
     else if(pitch == HIHAT) {
       //comets.add(new Comet(width-40, 40));
