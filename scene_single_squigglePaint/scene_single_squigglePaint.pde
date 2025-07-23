@@ -36,7 +36,8 @@ color[] colors = {
 };
 
 void setup() {
-  fullScreen();
+  //fullScreen();
+  size(1920, 1080);
   //noStroke();
   //colorMode(HSB, 360, 100, 100);
   //size(800, 800);
@@ -58,7 +59,7 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+  background(255);
   yoff += yinc;
   float yoff = 0;
   for (int y = 0; y < rows; y++) {

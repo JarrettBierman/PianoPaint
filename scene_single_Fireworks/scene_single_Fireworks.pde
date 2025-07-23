@@ -15,7 +15,8 @@ int HIGH_CUTOFF = 77;
 String PORT_NAME = "Bus 1";
 
 void setup() {
-  fullScreen();
+  //fullScreen();
+  size(1920, 1080);
   myBus = new MidiBus();
   myBus.registerParent(this);
   myBus.addInput("Bus 1");

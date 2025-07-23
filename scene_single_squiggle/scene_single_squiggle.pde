@@ -21,8 +21,8 @@ GradientManager gm;
 MidiBus myBus;
 
 void setup() {
-  fullScreen();
-  //size(800, 800);
+  //fullScreen();
+  size(1920, 1080);
   
   //colorMode(HSB, 360, 100, 100);
   cols = floor(width / scl);
@@ -41,7 +41,7 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+  background(255);
   yoff += yinc;
   float yoff = 0;
   for (int y = 0; y < rows; y++) {
