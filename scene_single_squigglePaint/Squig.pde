@@ -44,7 +44,7 @@ class Squig {
     }
     
     if(state == SquigState.SHRINK){
-      lifespan -= 1;
+      lifespan -= 2;
       if(lifespan <= 0) {
         state = SquigState.DEAD;
       }

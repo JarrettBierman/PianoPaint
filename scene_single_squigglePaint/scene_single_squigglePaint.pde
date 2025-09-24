@@ -2,7 +2,7 @@ import themidibus.*;
 import java.util.HashMap; // import the HashMap class
 
 float inc = 0.02;
-int scl = 32;
+int scl = 10;
 int cols, rows;
 float zoff = 0;
 PVector[] flowfield;
@@ -36,8 +36,8 @@ color[] colors = {
 };
 
 void setup() {
-  //fullScreen();
-  size(1920, 1080);
+  fullScreen();
+  //size(1920, 1080);
   //noStroke();
   //colorMode(HSB, 360, 100, 100);
   //size(800, 800);
@@ -59,7 +59,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(0);
   yoff += yinc;
   float yoff = 0;
   for (int y = 0; y < rows; y++) {
@@ -107,8 +107,10 @@ void draw() {
 
 void noteOn(int channel, int pitch, int velocity) {
   // Receive a noteOn
-  float mappedX = map(pitch % 24, 0, 24, 0, width);
-  float randX = mappedX + random(-30, 30);
+  float offset = 16;
+  float mappedX = map((pitch + offset) % 48, 0, 48, 0, width);
+  //float mappedX = map(pitch, 22, 127, 0, width);
+  float randX = mappedX + random(-5, 5);
   float randY = noise(yoff) * height + random(-50, 50);
   //color randColor = gm.gradient(map(pitch, 30, 90, 0, 1));
   //color randColor = lerpColor(c1, c2, map(pitch, 35, 88, 0, 1));
@@ -118,9 +120,9 @@ void noteOn(int channel, int pitch, int velocity) {
   //color randColor = colors[4];
  
   
-  float mappedWeight = map(velocity, 20, 127, 0, 10);
-  float mappedSpeed = map(velocity, 20, 120, 0, 10);
-  float mappedGrow = map(velocity, 20, 120, 0.5, 4);
+  float mappedWeight = map(velocity, 10, 127, 0, 20);
+  float mappedSpeed = map(velocity, 10, 120, 0, 25);
+  float mappedGrow = map(velocity, 10, 120, 0.5, 3);
   
   ripples.add(new Ripple(randX, randY, mappedGrow, randColor));
   squigs.add(new Squig(randX, randY, randColor, mappedWeight, mappedSpeed, pitch));
