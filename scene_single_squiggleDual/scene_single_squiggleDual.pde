@@ -19,7 +19,7 @@ color leftColor;
 color rightColor;
 
 void setup() {
-  fullScreen(1);
+  fullScreen(2);
   
   cols = floor(width / scl);
   rows = floor(height / scl);
@@ -31,9 +31,9 @@ void setup() {
   myBus.registerParent(this);
   myBus.addInput("Bus 1");
   
-  backgroundColor = color(#333333);
-  leftColor = color(#48e5c2);
-  rightColor = color(#fcfaf9);
+  backgroundColor = color(#222222);
+  leftColor = color(#F79256);
+  rightColor = color(#7DCFB6);
   
 }
 
