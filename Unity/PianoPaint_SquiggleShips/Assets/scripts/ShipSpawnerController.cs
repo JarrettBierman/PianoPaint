@@ -25,6 +25,7 @@ public class ShipSpawnerController : MonoBehaviour
     public int minMidiNote = 23;
     public int maxMidiNote = 109;
     public bool disableSpawnOutsideOfMidiZone;
+    public float shipSizeMultiplier = 1.0f;
 
     private MidiDevice midiDevice;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -73,7 +74,7 @@ public class ShipSpawnerController : MonoBehaviour
                 shipSettings.noiseScale = shipNoiseScale;
                 shipSettings.color = gradient.Evaluate(math.remap(minMidiNote, maxMidiNote, 0, 1, pitch));
 
-                var scaleFactor = sizeCurve.Evaluate(velocity);
+                var scaleFactor = sizeCurve.Evaluate(velocity) * shipSizeMultiplier;
                 ship.transform.localScale = new Vector3(0.7f * scaleFactor, scaleFactor, scaleFactor);
             }
             
